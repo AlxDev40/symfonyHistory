@@ -8,7 +8,7 @@ You will also have the possibility to insert yourself a character in order to fe
 
 This project is also a way to improve myself on the symfony 6 framework, by following the tuto of the channel [développeur musclé](https://www.youtube.com/playlist?list=PLUiuGjup8Vg5t20nu7aaJDnbHlhzXbbuN).
 
-## affichage des dates
+## display of dates in twig files 
 To have the date display I use directly the twig display. You have to download the format_datetime filter which is part of the IntlExtension:
 
 > composer require twig/intl-extra
