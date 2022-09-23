@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Character
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+
+		<h1 class="mt-5">{{ character.name }}</h1>
+
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>BirthDate</th>
+					<td>{{ character.birthDate ? character.birthDate|format_datetime('long', 'none', locale='fr') : '' }}</td>
+
+				</tr>
+				<tr>
+					<th>DeathDate</th>
+					<td>{{ character.deathDate ? character.deathDate|format_datetime('long', 'none', locale='fr') : '' }}</td>
+
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_character_index') }}" class="btn btn-primary">Retour à la liste des personnages</a>
+
+		<a href="{{ path('app_character_edit', {'id': character.id}) }}" class=" btn btn-primary">Editer le personnage</a>
+
+
+		{{ include('character/_delete_form.html.twig') }}
+
+	</div>
+
+{% endblock %}

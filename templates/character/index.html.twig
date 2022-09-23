@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les prersonnages
+{% endblock %}
+
+{% block body %}
+
+	<div class="container ">
+
+		<h1 class="mt-5 mb-5 text-center">Liste des personnages</h1>
+
+
+		<a href="{{ path('app_character_new') }}" class="btn btn-secondary mb-5">Créer un nouveaux personnage</a>
+
+		{% if characters.getTotalItemCount == 0 %}
+			La base ne contient pas de Personnages
+		{% endif %}
+
+		<table class="table table-hover text-center">
+
+			<thead>
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Date de naissance</th>
+					<th scope="col">Date de décès</th>
+					<th scope="col">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for character in characters %}
+					<tr>
+						<td>{{ character.name }}</td>
+						<td>{{ character.birthDate ? character.birthDate|format_datetime('long', 'none', locale='fr') : '' }}</td>
+						<td>{{ character.deathDate ? character.deathDate|format_datetime('long', 'none', locale='fr') : '' }}</td>
+						<td>
+							<a href="{{ path('app_character_show', {'id': character.id}) }}" class=" btn btn-info">Voir le personnage</a>
+							<a href="{{ path('app_character_edit', {'id': character.id}) }}" class=" btn btn-info">Editer le personnage</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<div class="mt-4">
+			{{ knp_pagination_render(characters) }}
+		</div>
+
+	</div>
+
+{% endblock %}

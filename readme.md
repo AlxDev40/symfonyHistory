@@ -13,6 +13,8 @@ To have the date display I use directly the twig display. You have to download t
 
 > composer require twig/intl-extra
 
-Ressources : [format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html) 
+Ressources : [format_datetime](https://twig.symfony.com/doc/3.x/filters/format_datetime.html)
+
+## Pagination with knp Paginator
 
 **Of course this site is a draft and it will evolve.**
