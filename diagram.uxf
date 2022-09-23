@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>20</x><y>262</y><w>270</w><h>120</h></coordinates><panel_attributes>Character
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>20</x><y>262</y><w>270</w><h>140</h></coordinates><panel_attributes>Character
 unique entity by name
 bg=green
 --
@@ -30,7 +30,7 @@ rank : number - not null
 2 = 1 + add Perso+Dyn+Tile+battle
 3 = superviseur
 --
-post : relation with Post table - nullable</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>262</y><w>200</w><h>120</h></coordinates><panel_attributes>Battle
+post : relation with Post table - nullable</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>262</y><w>200</w><h>150</h></coordinates><panel_attributes>Battle
 unique entity by date
 bg=green
 --
@@ -42,7 +42,7 @@ date: dateTime - not null
 --
 Lieux: varcher 255 - notNull
 --
-Relation: Personality ManyToMany</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>262</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=-
+Relation: Personality ManyToMany</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>372</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..
 m2=0..
-</panel_attributes><additional_attributes>10;110;170;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element></diagram>

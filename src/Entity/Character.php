@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -27,6 +29,15 @@ class Character
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $deathDate = null;
+
+    #[ORM\ManyToMany(targetEntity: Battle::class, mappedBy: 'characters')]
+    private Collection $battles;
+
+    public function __construct()
+    {
+        $this->battles = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -65,6 +76,33 @@ class Character
     public function setDeathDate(?\DateTimeInterface $deathDate): self
     {
         $this->deathDate = $deathDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Battle>
+     */
+    public function getBattles(): Collection
+    {
+        return $this->battles;
+    }
+
+    public function addBattle(Battle $battle): self
+    {
+        if (!$this->battles->contains($battle)) {
+            $this->battles->add($battle);
+            $battle->addCharacter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBattle(Battle $battle): self
+    {
+        if ($this->battles->removeElement($battle)) {
+            $battle->removeCharacter($this);
+        }
 
         return $this;
     }
