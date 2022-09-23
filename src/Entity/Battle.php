@@ -8,9 +8,7 @@ use App\Repository\BattleRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[UniqueEntity('name')]
 #[ORM\Entity(repositoryClass: BattleRepository::class)]
 class Battle
 {
@@ -21,7 +19,7 @@ class Battle
 
     #[ORM\Column(length: 255)]
     #[NotBlank()]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[NotBlank()]
@@ -46,12 +44,12 @@ class Battle
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }

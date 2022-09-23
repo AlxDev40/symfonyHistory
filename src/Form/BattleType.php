@@ -2,15 +2,16 @@
 
 namespace App\Form;
 
+use App\Entity\Battle;
 use App\Entity\Character;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class CharacterType extends AbstractType
+class BattleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,28 +19,35 @@ class CharacterType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Entrez le nom du personnage'
+                    'placeholder' => 'Entrez le nom de la bataille.'
                 ],
                 'label' => 'Nom',
                 'label_attr' => ['class' => 'col-form-label mt-4'],
             ])
-            ->add('birthDate', DateType::class, [
+            ->add('date', DateType::class, [
                 'format' => 'dd-MMM-y',
-                'label' => 'Date de naissance',
+                'label' => 'Date du début de la bataille.',
                 'label_attr' => ['class' => 'col-form-label mt-4'],
             ])
-
-            ->add('deathDate', DateType::class, [
-                'format' => 'dd-MMM-y',
-                'label' => 'Date de décès',
+            ->add('location', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Entrez la localisation de la bataille.'
+                ],
+                'label' => 'Localisation',
                 'label_attr' => ['class' => 'col-form-label mt-4'],
+            ])
+            ->add('characters', EntityType::class, [
+                'class' => Character::class,
+                'choice_label' => 'name',
+                'multiple' => true,
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Character::class,
+            'data_class' => Battle::class,
         ]);
     }
 }

@@ -38,7 +38,6 @@ class Character
         $this->battles = new ArrayCollection();
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -105,5 +104,9 @@ class Character
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}symfonyHistory - Voir une bataille
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Bataille de
+			{{ battle.name }}</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Date</th>
+					<td>{{ battle.date ? battle.date|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Location</th>
+					<td>{{ battle.location }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_battle_index') }}">back to list</a>
+
+		<a href="{{ path('app_battle_edit', {'id': battle.id}) }}">edit</a>
+
+		{{ include('battle/_delete_form.html.twig') }}
+
+	</div>
+
+{% endblock %}

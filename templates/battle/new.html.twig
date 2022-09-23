@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}symfonyHistory - ajouter une bataille
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Ajouter une bataille</h1>
+
+
+		{{ include('battle/_form.html.twig') }}
+
+		<a href="{{ path('app_battle_index') }}">back to list</a>
+
+	</div>
+
+{% endblock %}

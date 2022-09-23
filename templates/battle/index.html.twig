@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}symfonyHistory - Les batailles
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Les batailles</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Date</th>
+					<th>Localisation</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for battle in battles %}
+					<tr>
+
+						<td>{{ battle.name }}</td>
+						<td>{{ battle.date ? battle.date|format_datetime('long', 'none', locale='fr') : '' }}</td>
+						<td>{{ battle.location }}</td>
+						<td>
+							<a href="{{ path('app_battle_show', {'id': battle.id}) }}">show</a>
+							<a href="{{ path('app_battle_edit', {'id': battle.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="mt-4">
+			{{ knp_pagination_render(battles) }}
+		</div>
+
+		<a href="{{ path('app_battle_new') }}">Create new</a>
+
+	</div>
+
+{% endblock %}

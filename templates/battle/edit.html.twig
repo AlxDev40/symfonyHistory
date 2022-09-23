@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}symfonyHistory - Editer les batailles
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Edition des batailles</h1>
+
+		{{ include('battle/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('app_battle_index') }}">back to list</a>
+
+		{{ include('battle/_delete_form.html.twig') }}
+
+	</div>
+
+{% endblock %}
